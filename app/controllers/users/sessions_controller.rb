@@ -4,16 +4,15 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(_resource, _opts = {})
-    self.resource = warden.authenticate!(scope: :user, name: params[:name], password: params[:password])
-    login_success && return if current_user
-
+    self.resource = warden.authenticate!(scope: :user, name: params[:user][:name], password: params[:user][:password])
+    login_success && return if resource
     login_failed
   end
 
   def login_success
     render json: {
       message: 'You are logged In',
-      user: current_user,
+      user: resource,
       token: request.env['warden-jwt_auth.token'],
       status: 200
     }, status: :ok
@@ -28,7 +27,13 @@ class Users::SessionsController < Devise::SessionsController
 
   def respond_to_on_destroy
     authenticate_user!
-    log_out_success
+    sign_out(:user)
+    render json: {
+      message: 'You are logged out',
+      status: 204
+    }, status: :ok
+    # authenticate_user!
+    # log_out_success
   end
 
   def log_out_success
