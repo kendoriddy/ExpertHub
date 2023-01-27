@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :jwt_authenticatable, jwt_revocation_strategy: self
 
-         validates :name, presence: true
+  validates :name, presence: true
 
   has_many :appointments
   has_many :technicians, through: :appointments
