@@ -32,8 +32,6 @@ class Users::SessionsController < Devise::SessionsController
       message: 'You are logged out',
       status: 204
     }, status: :ok
-    # authenticate_user!
-    # log_out_success
   end
 
   def log_out_success
