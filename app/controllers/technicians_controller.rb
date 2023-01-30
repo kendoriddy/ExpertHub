@@ -48,7 +48,7 @@ class TechniciansController < ApplicationController
   end
 
   def destroy
-    @technician = Techician.find(params[:id])
+    @technician = Technician.find(params[:id])
     @technician.destroy
     render json: {
              status: 'success',
@@ -60,6 +60,6 @@ class TechniciansController < ApplicationController
   private
 
   def technician_params
-    params.require(:technician).permit(:name, :location, :charges, :image)
+    params.require(:technician).permit(:name, :location, :charges, :image, :spacialiazation)
   end
 end
