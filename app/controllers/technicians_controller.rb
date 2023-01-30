@@ -60,6 +60,6 @@ class TechniciansController < ApplicationController
   private
 
   def technician_params
-    params.require(:technician).permit(:name, :location, :charges, :image, :spacialiazation)
+    params.require(:technician).permit(:name, :location, :charges, :image, :specialiazation)
   end
 end
