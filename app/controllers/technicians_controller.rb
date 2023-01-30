@@ -1,7 +1,7 @@
 class TechniciansController < ApplicationController
   def index
     @technicians = Technician.all
-    render :json => @technicians, each_serializer: TechnicianSerializer
+    render json: @technicians, each_serializer: TechnicianSerializer
   end
 
   def show
