@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   def index
     @appointments = current_user.appointments
-    render json: @appointments
+    render json: @appointments, each_serializer: AppointmentSerializer
   end
 
   def show
@@ -12,7 +12,6 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    p params
     begin
       @appointment = current_user.appointments.new(appointment_params)
       if @appointment.save
