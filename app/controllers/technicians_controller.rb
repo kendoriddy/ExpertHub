@@ -18,7 +18,7 @@ class TechniciansController < ApplicationController
     if @technician.save
       render json: {
                status: 'success',
-               message: ' Techician created successfully'
+               message: ' Technician created successfully'
              },
              status: :created
     else
@@ -35,7 +35,7 @@ class TechniciansController < ApplicationController
     if @technician
       render json: {
                status: 'success',
-               message: ' Techician Update successfully'
+               message: ' Technician Update successfully'
              },
              status: :ok
     else
@@ -52,7 +52,7 @@ class TechniciansController < ApplicationController
     @technician.destroy
     render json: {
              status: 'success',
-             message: 'Techician deleted successfully'
+             message: 'Technician deleted successfully'
            },
            status: :ok
   end
