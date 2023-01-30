@@ -30,6 +30,23 @@ class TechniciansController < ApplicationController
     end
   end
 
+  def update
+    @technician = Techician.find(params[:id]).update(technician_params)
+    if @technician
+      render json: {
+        status: 'success',
+        message: ' Techician Update successfully'
+      },
+      status: :ok
+    else
+      render json: {
+        status: 'error',
+        message: @technician.errors
+      },
+      status: :unprocessable_entity
+    end
+  end
+
   private 
   def technician_params
     params.require(:technician).permit(:name, :location, :charges,:image)
