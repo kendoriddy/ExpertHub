@@ -12,16 +12,14 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    begin
-      @appointment = current_user.appointments.new(appointment_params)
-      if @appointment.save
-        render json: { status: :success, appointment: @appointment }, status: :created
-      else
-        render json: { status: :error, errors: @appointment.errors }, status: :unprocessable_entity
-      end
-    rescue ArgumentError
-      render json: { status: :error, message: 'Invalid date format' }, status: :bad_request
+    @appointment = current_user.appointments.new(appointment_params)
+    if @appointment.save
+      render json: { status: :success, appointment: @appointment }, status: :created
+    else
+      render json: { status: :error, errors: @appointment.errors }, status: :unprocessable_entity
     end
+  rescue ArgumentError
+    render json: { status: :error, message: 'Invalid date format' }, status: :bad_request
   end
 
   def destroy
