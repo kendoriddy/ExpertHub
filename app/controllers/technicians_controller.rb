@@ -47,6 +47,16 @@ class TechniciansController < ApplicationController
     end
   end
 
+  def destroy
+    @technician = Techician.find(params[:id])
+    @technician.destroy
+    render json: {
+      status: 'success',
+      message: 'Techician deleted successfully'
+    },
+    status: :ok
+  end
+
   private 
   def technician_params
     params.require(:technician).permit(:name, :location, :charges,:image)
