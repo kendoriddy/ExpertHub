@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   }
 
   # Defines the root path route ("/")
-  root to: "home#index"
+  root to: "technicians#index"
+  resources :technicians, only: [:index, :new, :create,:show, :update,:destroy]
 end
