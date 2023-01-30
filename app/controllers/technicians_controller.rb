@@ -8,4 +8,30 @@ class TechniciansController < ApplicationController
     @technician = Technician.find(params[:id])
     render json: @technician, each_serializer: TechnicianSerializer
   end
+
+  def new
+    @technician = Technician.new
+  end
+
+  def create
+    @technician = Technician.new(technician_params)
+    if @technician.save
+      render json: {
+        status: 'success',
+        message: ' Techician created successfully'
+      },
+      status: :created
+    else
+      render json: {
+        status: 'error',
+        message: @technician.errors
+      },
+      status: :unprocessable_entity
+    end
+  end
+
+  private 
+  def technician_params
+    params.require(:technician).permit(:name, :location, :charges,:image)
+  end
 end
