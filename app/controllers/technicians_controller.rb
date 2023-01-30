@@ -17,16 +17,16 @@ class TechniciansController < ApplicationController
     @technician = Technician.new(technician_params)
     if @technician.save
       render json: {
-        status: 'success',
-        message: ' Techician created successfully'
-      },
-      status: :created
+               status: 'success',
+               message: ' Techician created successfully'
+             },
+             status: :created
     else
       render json: {
-        status: 'error',
-        message: @technician.errors
-      },
-      status: :unprocessable_entity
+               status: 'error',
+               message: @technician.errors
+             },
+             status: :unprocessable_entity
     end
   end
 
@@ -34,16 +34,16 @@ class TechniciansController < ApplicationController
     @technician = Techician.find(params[:id]).update(technician_params)
     if @technician
       render json: {
-        status: 'success',
-        message: ' Techician Update successfully'
-      },
-      status: :ok
+               status: 'success',
+               message: ' Techician Update successfully'
+             },
+             status: :ok
     else
       render json: {
-        status: 'error',
-        message: @technician.errors
-      },
-      status: :unprocessable_entity
+               status: 'error',
+               message: @technician.errors
+             },
+             status: :unprocessable_entity
     end
   end
 
@@ -51,14 +51,15 @@ class TechniciansController < ApplicationController
     @technician = Techician.find(params[:id])
     @technician.destroy
     render json: {
-      status: 'success',
-      message: 'Techician deleted successfully'
-    },
-    status: :ok
+             status: 'success',
+             message: 'Techician deleted successfully'
+           },
+           status: :ok
   end
 
-  private 
+  private
+
   def technician_params
-    params.require(:technician).permit(:name, :location, :charges,:image)
+    params.require(:technician).permit(:name, :location, :charges, :image)
   end
 end
