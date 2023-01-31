@@ -12,7 +12,8 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = current_user.appointments.new(appointment_params)
     if @appointment.save
-      render json: { status: :success, appointment: @appointment, message: ' Technician created successfully' }, status: :created
+      render json: { status: :success, appointment: @appointment, message: ' Technician created successfully' },
+             status: :created
     else
       render json: { status: :error, errors: @appointment.errors }, status: :unprocessable_entity
     end
