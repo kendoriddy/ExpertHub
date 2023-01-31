@@ -1,4 +1,4 @@
-class AppointmentsController < ApplicationController
+class Api::V1::AppointmentsController < ApplicationController
   def index
     @appointments = current_user.appointments
     render json: @appointments, each_serializer: AppointmentSerializer
