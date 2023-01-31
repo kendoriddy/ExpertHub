@@ -1,9 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/appointments', type: :request do
-
   path '/api/v1/users/{user_id}/appointments' do
-    # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
 
     get('list appointments') do
@@ -49,7 +47,6 @@ RSpec.describe 'api/v1/appointments', type: :request do
   end
 
   path '/api/v1/users/{user_id}/appointments/{id}' do
-    # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 

@@ -6,7 +6,6 @@ RSpec.describe 'users/registrations', type: :request do
   end
 
   path '/users' do
-
     post('create registration') do
       response(200, 'Sign up successful') do
         consumes 'application/json'

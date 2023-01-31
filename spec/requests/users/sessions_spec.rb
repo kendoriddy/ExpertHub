@@ -10,7 +10,6 @@ RSpec.describe 'users/sessions', type: :request do
   end
 
   path '/users/sign_in' do
-
     post('create session') do
       response(200, 'successful') do
         consumes 'application/json'
@@ -36,13 +35,11 @@ RSpec.describe 'users/sessions', type: :request do
   end
 
   path '/users/sign_out' do
-
     delete('delete session') do
       after do
         logout(:user)
       end
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
