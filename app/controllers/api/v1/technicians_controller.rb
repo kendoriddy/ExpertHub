@@ -1,4 +1,4 @@
-class TechniciansController < ApplicationController
+class Api::V1::TechniciansController < ApplicationController
   def index
     @technicians = Technician.all
     render json: @technicians, each_serializer: TechnicianSerializer
