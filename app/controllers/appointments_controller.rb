@@ -6,15 +6,13 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
-    render json: {
-      appointment: @appointment
-    }, status: :created
+    render json: @appointment, each_serializer: AppointmentSerializer
   end
 
   def create
     @appointment = current_user.appointments.new(appointment_params)
     if @appointment.save
-      render json: { status: :success, appointment: @appointment }, status: :created
+      render json: { status: :success, appointment: @appointment, message: ' Technician created successfully' }, status: :created
     else
       render json: { status: :error, errors: @appointment.errors }, status: :unprocessable_entity
     end
