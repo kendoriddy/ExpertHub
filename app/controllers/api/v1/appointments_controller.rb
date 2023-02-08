@@ -10,12 +10,12 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = current_user.appointments.new(appointment_params)
-    if @appointment.save
+    appointment = Appointment.new(appointment_params)
+    if appointment.save
       render json: { status: :success, appointment: @appointment, message: ' Technician created successfully' },
              status: :created
     else
-      render json: { status: :error, errors: @appointment.errors }, status: :unprocessable_entity
+      render json: { status: :error, error: appointment.errors.full_messages }, status: :unprocessable_entity
     end
   rescue ArgumentError
     render json: { status: :error, message: 'Invalid date format' }, status: :bad_request
