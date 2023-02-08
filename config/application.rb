@@ -38,6 +38,16 @@ module ExpertHub
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
+    config.middleware.insert_before 0, Rack::Cors do
+      # allow do
+      #   origins '*'
+      #   resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      # end
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
 
   end
 end

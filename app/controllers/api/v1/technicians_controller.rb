@@ -31,7 +31,7 @@ class Api::V1::TechniciansController < ApplicationController
   end
 
   def update
-    @technician = Techician.find(params[:id]).update(technician_params)
+    @technician = Technician.find(params[:id]).update(technician_params)
     if @technician
       render json: {
                status: 'success',
@@ -60,6 +60,6 @@ class Api::V1::TechniciansController < ApplicationController
   private
 
   def technician_params
-    params.require(:technician).permit(:name, :location, :charges, :image, :specialiazation)
+    params.require(:technician).permit(:name, :location, :charges, :image, :specialization)
   end
 end
