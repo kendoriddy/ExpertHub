@@ -2,13 +2,9 @@ class Api::V1::AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @appointments = current_user.appointments
     render json: current_user.appointments.includes([:technician]).order(id: :desc),
            each_serializer: AppointmentSerializer
   end
-  # def index
-  #   render json: current_user.bookings.includes([:technician]).order(id: :desc), status: :ok
-  # end
 
   def show
     @appointment = Appointment.find(params[:id])
@@ -18,7 +14,7 @@ class Api::V1::AppointmentsController < ApplicationController
   def create
     appointment = Appointment.new(appointment_params)
     if appointment.save
-      render json: { status: :success, appointment: @appointment, message: ' Technician created successfully' },
+      render json: { status: :success, appointment: AppointmentSerializer.new(appointment), message: ' Appointment created successfully' },
              status: :created
     else
       render json: { status: :error, error: appointment.errors.full_messages }, status: :unprocessable_entity
@@ -28,9 +24,13 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def destroy
-    return render json: { error: 'Appointment not found' }, status: :not_found unless @current_appointment
-
-    render json: { message: 'Appointment deleted succesfully.' } if @current_appointment.destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    render json: {
+             status: 'success',
+             message: 'Appointment deleted successfully'
+           },
+           status: :ok
   end
 
   private
