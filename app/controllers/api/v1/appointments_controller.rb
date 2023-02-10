@@ -14,7 +14,7 @@ class Api::V1::AppointmentsController < ApplicationController
   def create
     appointment = Appointment.new(appointment_params)
     if appointment.save
-      render json: { status: :success, appointment: @appointment, message: ' Technician created successfully' },
+      render json: { status: :success, appointment: AppointmentSerializer.new(appointment), message: ' Appointment created successfully' },
              status: :created
     else
       render json: { status: :error, error: appointment.errors.full_messages }, status: :unprocessable_entity
