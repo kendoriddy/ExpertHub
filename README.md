@@ -133,7 +133,7 @@ rails s
 
 Run tests using this command:
 ```
-rspec spec
+rake rswag
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
