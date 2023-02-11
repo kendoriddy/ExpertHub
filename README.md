@@ -104,6 +104,21 @@ Make sure you have `Git` and `Ruby` installed
 
 Install the project using this command:
 
+
+### db Commands
+
+`rails db:create`
+`rails db:migrate`
+`rails db:seed`
+
+### To generate master.key and config/credentials.yml.enc
+
+Run in terminal:
+
+EDITOR=code rails credentials:edit
+
+This command will create a new master.key and credentials.yml.enc if they do not exist.
+
 ```
   bundle install
 ```
@@ -173,6 +188,6 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT]() licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
