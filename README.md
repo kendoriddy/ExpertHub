@@ -30,7 +30,7 @@
 # 📖 ExpertHub <a name="about-project"></a>
 ExpertHub is a technician reservasation website that provide the public with an easy and convenient way to rent technicians and offer technical services to people.
 
-- [Frontend](https://github.com/businesskaniki/experts_hub)<a name="rails-backend"></a>
+- [Frontend](https://github.com/kendoriddy/experts_hub)<a name="rails-backend"></a>
 - [Kanban Board](https://github.com/users/Bateyjosue/projects/2)<a name="kanban-board"></a>
 
 ## 🛠 Built With <a name="built-with"></a>
